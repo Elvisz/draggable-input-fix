@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Text for draggable input fix</title>
+  <script src="draggable-input-fix.js"></script>
+  <style>
+    input, textarea {
+      margin: 1em 0;
+    }
+
+    .wrapper {
+      padding: 1em;
+      float: left;
+      background-color: #EEE;
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper" draggable="true">
+  <input type="text" value="text"/><br/>
+  <input type="search" value="search"/><br/>
+  <input type="email" value="test@email.com"/><br/>
+  <input type="url" value="http://localhost/"/><br/>
+  <input type="number" value="99"/><br/>
+  <input type="tel" value="1-11-1111111"/><br/>
+  <input type="datetime" value="2015/01/01"/><br/>
+  <input type="range"/><br/>
+  <textarea></textarea>
+</div>
+</body>
+</html>
