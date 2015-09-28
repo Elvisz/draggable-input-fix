@@ -12,3 +12,6 @@ Safari Version 8.0.8 (10600.8.9) or later has no such issues, so this workaround
  * IE10, IE11 and IE Edge about 1~7;
  * Firefox about point 4~7;
  * Chrome about 3;
+
+# How to use
+Add the workaround `draggable-input-fix.js` to your project.
