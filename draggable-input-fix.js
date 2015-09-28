@@ -15,16 +15,14 @@
  *
  * */
 
-(function(supportDragAndDrop) {
+(function(supportDragAndDrop, isChrome, doc) {
   var draggableAncestors = [];
-  var isChrome = 'chrome' in window;
-  var isSafari = /Safari\//.test(navigator.userAgent) && !isChrome;
   var inputBoxes = /^(text|search|email|url|number|tel|datetime|range)$/;
-  var body = document.body;
+  var body = doc.body;
   var diableEvent = 'mouseover';
   var recoveryEvents = ['mouseout', 'blur'];
 
-  if (!supportDragAndDrop || isSafari) {
+  if (!supportDragAndDrop || /Safari\//.test(navigator.userAgent) && !isChrome) {
     //Safari has not such issues, and if browser not supports drag and drop, also has not such issues, so just skip
     return;
   }
@@ -35,7 +33,7 @@
   }
 
   //disable ancestors draggable to fix
-  document.addEventListener(diableEvent, function(e) {
+  doc.addEventListener(diableEvent, function(e) {
     var element = e.target;
     var tagName = element.tagName.toLowerCase();
 
@@ -55,7 +53,7 @@
 
   //recovery the draggable ancestors
   recoveryEvents.forEach(function(event) {
-    document.addEventListener(event, function(e) {
+    doc.addEventListener(event, function(e) {
       draggableAncestors.forEach(function(el) {
         el.setAttribute('draggable', true);
       });
@@ -67,4 +65,4 @@
   //detect if browser support drag and drop
   var div = document.createElement('div');
   return 'draggable' in div || ('ondragstart' in div && 'ondrop' in div);
-});
+}, 'chrome' in window, document);
