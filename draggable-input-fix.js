@@ -1,5 +1,5 @@
 /*
- * If a input field ancestor is a [draggable="true"] node, following issue will be addressed to different browsers.
+ * If a input field ancestor is a [draggable="true"] node, following issues will be addressed to different browsers.
  *   a. input[type="text"] liked fields cannot be focused by mousedown/click;
  *   b. textarea cannot be focused by mousedown/click;
  *   c. text in input[type="text"] liked fields cannot be selected by mouse;
@@ -19,7 +19,7 @@
   var draggableAncestors = [];
   var inputBoxes = /^(text|search|email|url|number|tel|datetime|range)$/;
   var body = doc.body;
-  var diableEvent = 'mouseover';
+  var triggerEvent = 'mouseover';
   var recoveryEvents = ['mouseout', 'blur'];
 
   if (!supportDragAndDrop || /Safari\//.test(navigator.userAgent) && !isChrome) {
@@ -28,12 +28,12 @@
   }
 
   if (isChrome) {
-    diableEvent = 'mousedown';
+    triggerEvent = 'mousedown';
     recoveryEvents.push('mouseup');
   }
 
   //disable ancestors draggable to fix
-  doc.addEventListener(diableEvent, function(e) {
+  doc.addEventListener(triggerEvent, function(e) {
     var element = e.target;
     var tagName = element.tagName.toLowerCase();
 
