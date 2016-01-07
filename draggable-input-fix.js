@@ -54,11 +54,9 @@
   //recovery the draggable ancestors
   recoveryEvents.forEach(function(event) {
     doc.addEventListener(event, function(e) {
-      draggableAncestors.forEach(function(el) {
-        el.setAttribute('draggable', true);
-      });
-
-      draggableAncestors = [];
+      while(draggableAncestors.length) {
+        draggableAncestors.pop().setAttribute('draggable', true);
+      }
     }, false);
   });
 })(function() {
